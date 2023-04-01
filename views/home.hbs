@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="d-grid gap-3">
+            <div class="bg-light border rounded-3">
+                <form method="GET" action="/search_sach_theo_gia">
+                    <div class="d-flex align-items-center">
+                        <div class="col">
+                            <input type="number" class="form-control" name="minPrice" placeholder="Giá tối thiểu">
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control" name="maxPrice" placeholder="Giá tối đa">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                        <div class="dropdown">
+                            <a href="quanlysach" class="list-group-item list-group-item-action"><img
+                                    src="https://media.istockphoto.com/id/1267641540/vector/shopping-cart-icon-symbol-flat-shape-trolley-web-store-button-online-shop-logo-sign-vector.jpg?s=612x612&w=0&k=20&c=7aXfQutlQ-IkcY-cEaAtB0ATpPlOhCM4gjuSsHxgQ38="
+                                    alt="" style="height: 60px;"></a>
+                        </div>
+                    </div>
+                </form>
+                <h2>Danh sách sản phẩm</h2>
+                <table border="1" class="table table-striped table-hover">
+                    <tr>
+                        <th>Tên Sách</th>
+                        <th>Giá</th>
+                        <th style="width: 100px;">Số lượng</th>
+                        <th>Image</th>
+                        <th>chi tiết</th>
+                    </tr>
+                    <tr>
+                        {{#each allsach}}
+                    <tr>
+                        <td style="width:250px">{{this.tensach}}</td>
+                        <td>{{this.gia}}</td>
+                        <td>{{this.soluong}}</td>
+                        <td style="width:250px"><img src="{{this.image}}" alt="" class="img-thumbnail"
+                                style="height: 100px;  border: 2 red;"></td>
+                        <td style="width:250px">{{this.chitiet}}</td>
+                        <td>
+                            <a href="update_sach/{{this._id}}" class="btn btn-primary btn-sm"
+                                style="margin: 10px;">Sửa</a>
+                            <a href="xoa_sach/{{this._id}}" onclick="return confirm('Are you sure?')"
+                                style="margin: 10px;" class="btn btn-primary btn-sm">Xóa</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
